@@ -1,0 +1,12 @@
+.dropdown {
+  position: absolute;
+  top: 58px;
+  transform: translate(-45%);
+  overflow: hidden;
+}
+
+.menu-item {
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
