@@ -32,23 +32,36 @@ router.post("/post", auth, upload.single("image"), async (req, res) => {
 router.post("/post/like/:postID", auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.postID);
-    const isAlreadyLiked = post.positiveRates.find((id) => {
-      console.log(id);
-      console.log(req.user._id);
-      return id === req.user._id;
+    const likedPost = await post.reaction({
+      action: "like",
+      userID: req.user._id,
     });
-
-    console.log(isAlreadyLiked);
-
-    if (!isAlreadyLiked) {
-      post.positiveRates = post.positiveRates.concat(req.user._id);
-    } else {
-      throw new Error("You alredy liked this post");
-    }
-    await post.save();
-    res.send(post);
+    res.send(likedPost);
   } catch (error) {
-    console.log(error.toString());
+    res.send(error.toString());
+  }
+});
+
+router.post("/post/dislike/:postID", auth, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.postID);
+    const dislikedPost = await post.reaction({
+      action: "dislike",
+      userID: req.user._id,
+    });
+    res.send(dislikedPost);
+  } catch (error) {
+    res.send(error.toString());
+  }
+});
+
+router.get("/post/:postID/ratio", async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.postID);
+    const totalRatio = post.positiveRates.length - post.negativeRates.length;
+    res.send({ totalRatio });
+  } catch (error) {
+    res.send(error.toString());
   }
 });
 

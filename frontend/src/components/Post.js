@@ -64,10 +64,26 @@ class Post extends React.Component {
         base64String,
       });
     }
+    this.fetchLikesRatio();
   }
 
+  fetchLikesRatio = () => {
+    axios({
+      url: `http://localhost:3000/post/${this.props._id}/ratio`,
+      method: "GET",
+    })
+      .then((res) => {
+        this.setState({
+          rate: res.data.totalRatio,
+        });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
   handleSettings = () => {
-    this.setState((state, props) => ({
+    this.setState((state) => ({
       settingToggle: !state.settingToggle,
     }));
   };
@@ -115,6 +131,40 @@ class Post extends React.Component {
     }
   };
 
+  handleLike = () => {
+    const jwt = localStorage.getItem("jwt");
+    axios({
+      url: `http://localhost:3000/post/like/${this.props._id}`,
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+    })
+      .then((res) => {
+        this.fetchLikesRatio();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  handleDislike = () => {
+    const jwt = localStorage.getItem("jwt");
+    axios({
+      url: `http://localhost:3000/post/dislike/${this.props._id}`,
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+    })
+      .then((res) => {
+        this.fetchLikesRatio();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   settingOption = ({ option }) => {
     const settings = {
       option,
@@ -156,7 +206,6 @@ class Post extends React.Component {
                   </DropdownIcon>
                 </DropdownButton>
               )}
-
             <Modal
               isOpen={this.state.openModal}
               onRequestClose={this.handleCloseModal}
@@ -175,13 +224,11 @@ class Post extends React.Component {
                 <button>Edit</button>
               </form>
             </Modal>
-
             <p>{this.props.content}</p>
-            <button>+</button>
+            <button onClick={this.handleLike}>+</button> {/* maybe checkbox*/}
             <h3>{this.state.rate}</h3>
-            <button>-</button>
+            <button onClick={this.handleDislike}>-</button>
             <button onClick={this.handleCommentSection}>Comments</button>
-
             {this.state.commentSection && (
               <CommentSection postID={this.props._id} />
             )}
