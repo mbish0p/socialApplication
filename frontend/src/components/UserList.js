@@ -28,14 +28,19 @@ class User extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>
-          <Link to={`/${this.props.id}`}>{this.props.username}</Link>
-        </h2>
-        <h4>{this.props.email}</h4>
-        <h4>
-          Number of posts :{this.state.userPosts && this.state.userPosts.length}
-        </h4>
+      <div className="user--container">
+        <div className="user">
+          <h2>
+            <Link to={`/${this.props.id}`} className="username">
+              {this.props.username}
+            </Link>
+          </h2>
+          <h4>{this.props.email}</h4>
+          <h4>
+            Number of posts :
+            {this.state.userPosts && this.state.userPosts.length}
+          </h4>
+        </div>
       </div>
     );
   }

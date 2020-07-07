@@ -1,0 +1,79 @@
+.ReactModalPortal > div {
+  opacity: 0;
+}
+
+.ReactModalPortal .ReactModal__Overlay {
+  transition: opacity 300ms ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ReactModalPortal .ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModalPortal .ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.modal {
+  background: #353052;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 30rem;
+  align-items: center;
+}
+
+.modal h2 {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 3.2rem;
+}
+
+.modal--form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.modal--form input {
+  padding: 0.8rem;
+  margin-bottom: 0.8rem;
+  background: #353052;
+  border: solid #52d6f7 3px;
+  border-radius: 2.4rem;
+  color: #ffffff;
+  text-align: center;
+  outline: none;
+  transition: 0.25s;
+  width: 40%;
+}
+
+.modal--form input:focus {
+  width: 70%;
+  border-color: #ce95fa;
+}
+
+.modal--form button {
+  background: #ce95fa;
+  color: #353052;
+  width: 75%;
+  margin-top: 3.2rem;
+  margin-bottom: 1.6rem;
+}
+
+.modal--form button:hover {
+  background: #52d6f7;
+  color: #353052;
+}
+
+@media (min-width: 40rem) {
+  .modal {
+    max-width: 70rem;
+  }
+}

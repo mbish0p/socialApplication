@@ -185,37 +185,36 @@ class Post extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="post">
         {this.state.creator && (
-          <div>
-            <h2>{this.state.creator.name}</h2>
-            {/* If you are creator of post you can edit/delete only */}
-            {this.props.img && (
-              <img
-                src={`data:image/jpeg;base64,${this.state.base64String}`}
-                width="200px"
-                height="200px"
-              />
-            )}
-            {this.state.loggedUser &&
-              this.state.creator &&
-              this.state.creator._id === this.state.loggedUser._id && (
-                <DropdownButton>
-                  <DropdownIcon icon={<RiSettings4Line />}>
-                    <DropdownMenu settingOption={this.settingOption} />
-                  </DropdownIcon>
-                </DropdownButton>
-              )}
+          <div className="post--container">
+            <div className="post--header">
+              <h2 className="post--title">{this.state.creator.name}</h2>
+              {/* If you are creator of post you can edit/delete only */}
+              {this.state.loggedUser &&
+                this.state.creator &&
+                this.state.creator._id === this.state.loggedUser._id && (
+                  <DropdownButton>
+                    <DropdownIcon icon={<RiSettings4Line />}>
+                      <DropdownMenu settingOption={this.settingOption} />
+                    </DropdownIcon>
+                  </DropdownButton>
+                )}
+            </div>
             <Modal
               isOpen={this.state.openModal}
               onRequestClose={this.handleCloseModal}
+              closeTimeoutMS={300}
+              className="modal-edit"
             >
-              <h2>Edit Post</h2>
-              <button onClick={this.handleCloseModal}>Close</button>
-
-              <form onSubmit={this.handleSubmit}>
+              <div className="modal-edit--header">
                 <h2>{this.state.creator.name}</h2>
+                <h2>Edit Post</h2>
+              </div>
+
+              <form onSubmit={this.handleSubmit} className="modal-edit--form">
                 <textarea
+                  className="edit-post"
                   value={this.state.content}
                   type="text"
                   onChange={this.handleEdit}
@@ -224,11 +223,31 @@ class Post extends React.Component {
                 <button>Edit</button>
               </form>
             </Modal>
-            <p>{this.props.content}</p>
-            <button onClick={this.handleLike}>+</button> {/* maybe checkbox*/}
-            <h3>{this.state.rate}</h3>
-            <button onClick={this.handleDislike}>-</button>
-            <button onClick={this.handleCommentSection}>Comments</button>
+            <p className="post--content">{this.props.content}</p>
+            {this.props.img && (
+              <img
+                className="post--image"
+                src={`data:image/jpeg;base64,${this.state.base64String}`}
+              />
+            )}
+            <div className="post--activity">
+              <div className="post--likes">
+                <button className="post--button" onClick={this.handleLike}>
+                  +
+                </button>{" "}
+                {/* maybe checkbox*/}
+                <h3 className="post--rate">{this.state.rate}</h3>
+                <button className="post--button" onClick={this.handleDislike}>
+                  -
+                </button>
+              </div>
+              <button
+                className="post--button"
+                onClick={this.handleCommentSection}
+              >
+                Comments
+              </button>
+            </div>
             {this.state.commentSection && (
               <CommentSection postID={this.props._id} />
             )}

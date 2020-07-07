@@ -61,15 +61,24 @@ class RegistryHeader extends React.Component {
   render() {
     return (
       <div>
-        <h2>SocialApp</h2>
-        <button onClick={this.handleLoginModal}>Login</button>
+        <div className="registry--header">
+          <h2>SocialApp</h2>
+          <button
+            className="registry--header--login_button"
+            onClick={this.handleLoginModal}
+          >
+            Login
+          </button>
+        </div>
         <Modal
           isOpen={this.state.openModal}
           onRequestClose={this.handleCloseModal}
+          closeTimeoutMS={300}
+          className="modal"
         >
           <h2>Login</h2>
 
-          <form onSubmit={this.handleLogin}>
+          <form onSubmit={this.handleLogin} className="modal--form">
             <input
               value={this.state.email}
               onChange={this.handleChangeEmail}
@@ -82,10 +91,11 @@ class RegistryHeader extends React.Component {
               type="password"
               placeholder="Password  *"
             />
-            {this.state.error && <p>{this.state.error}</p>}
+            {this.state.error && (
+              <p className="form--error">{this.state.error}</p>
+            )}
             <button>Login</button>
           </form>
-          <button onClick={this.handleCloseModal}>Close</button>
         </Modal>
       </div>
     );

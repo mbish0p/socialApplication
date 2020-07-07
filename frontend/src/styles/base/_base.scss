@@ -1,9 +1,18 @@
 html {
   font-size: 62.5%;
+  margin: 0;
 }
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: $m-size;
+  margin: 0;
+  background: #353052;
+}
+
+.form--error {
+  font-weight: 500;
+  color: #f06363;
+  margin-top: 0rem;
 }
 
 button {

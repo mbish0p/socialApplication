@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 class Header extends React.Component {
   constructor(props) {
@@ -50,25 +52,38 @@ class Header extends React.Component {
   };
   render() {
     return (
-      <div>
-        <h2>
-          <Link to="/dashboard">Social App</Link>{" "}
-        </h2>
-        {this.props.username && <h2>{this.props.username.name}</h2>}
-        <form
-          action={`/dashboard/${this.state.username}`}
-          onSubmit={this.findUser}
-        >
-          <input
-            value={this.state.username}
-            onChange={this.handleFindChange}
-            placeholder="Username"
-            type="text"
-          />
-          <button>Find</button>
-        </form>
+      <div className="main-header">
+        <div className="container">
+          <h2 className="main-header--logo">
+            <Link to="/dashboard">SocialApp</Link>
+          </h2>
 
-        <button onClick={this.handleLogout}>Logout</button>
+          {this.props.username && (
+            <h2 className="main-header--username">
+              {this.props.username.name}
+            </h2>
+          )}
+
+          <form
+            className="main-header--form"
+            action={`/dashboard/${this.state.username}`}
+            onSubmit={this.findUser}
+          >
+            <input
+              value={this.state.username}
+              onChange={this.handleFindChange}
+              placeholder="Find"
+              type="text"
+            />
+            <button className="search-icon">
+              <FontAwesomeIcon icon={faSearch} />
+            </button>
+          </form>
+
+          <button className="logout-button" onClick={this.handleLogout}>
+            Logout
+          </button>
+        </div>
       </div>
     );
   }

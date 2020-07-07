@@ -1,0 +1,127 @@
+.comments--form {
+  display: flex;
+  margin-top: 1.2rem;
+}
+
+.comments--form input {
+  flex-grow: 1;
+  outline: none;
+  border-radius: 2.4rem;
+  background: #52d6f7;
+  border: solid 2px black;
+  text-align: center;
+}
+
+.comments--form input:focus {
+  background: #ce95fa;
+}
+
+.comments--form button:hover {
+  background-color: #ce95fa;
+  color: #353052;
+}
+
+.comment--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment--header h4 {
+  color: white;
+  font-weight: bold;
+  font-size: 2.8rem;
+}
+
+.comment--content {
+  color: white;
+  font-size: 1.7rem;
+  padding: 2.4rem;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: inherit;
+  justify-content: center;
+}
+
+.menu-item,
+.icon-button {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.menu-item:hover {
+  background: #ce95fa;
+  color: #353052;
+}
+
+.modal-edit {
+  background: #353052;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 50%;
+  align-items: center;
+}
+
+.modal-edit--header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.6rem;
+  width: 80%;
+}
+
+.modal-edit--header h2 {
+  color: white;
+  font-size: 3.2rem;
+  font-weight: 700;
+}
+
+.modal-edit--form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.edit-post {
+  width: 80%;
+  height: 10rem;
+  background: transparent;
+  border: solid #52d6f7 2px;
+  outline: none;
+  resize: none;
+  color: white;
+  font-size: 1.6rem;
+  box-shadow: inset 0 0 1rem #52d6f7, 0 0 1rem #52d6f7;
+  padding: 2.4rem;
+  margin-bottom: 1.6rem;
+}
+
+.modal-edit--form input {
+  width: 80%;
+  height: 3rem;
+  border-radius: 2.4rem;
+  background: transparent;
+  border: solid #52d6f7 2px;
+  outline: none;
+  color: white;
+  font-size: 1.6rem;
+  box-shadow: inset 0 0 1rem #52d6f7, 0 0 1rem #52d6f7;
+  padding: 1.6rem;
+  margin-bottom: 1.6rem;
+}
+
+.modal-edit--form button {
+  padding-left: 6.6rem;
+  padding-right: 6.6rem;
+}
+
+.modal-edit--form button:hover {
+  background: #ce95fa;
+  color: #353052;
+}

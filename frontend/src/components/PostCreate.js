@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faImages } from "@fortawesome/free-solid-svg-icons";
 
 class PostCreat extends React.Component {
   constructor(props) {
@@ -49,16 +51,26 @@ class PostCreat extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.createPost}>
-          <label>Creat post</label>
-          <input type="file" onChange={this.fileUpload} />
+        <form className="create-post--form" onSubmit={this.createPost}>
+          <label className="create-post--title">Creat post</label>
+          <input
+            className="file-input"
+            type="file"
+            id="file"
+            onChange={this.fileUpload}
+          />
           <textarea
+            className="creat-post--textarea"
             placeholder="Write here your post"
             value={this.state.postMessage}
             onChange={this.handlePostChange}
             type="text"
           />
-          <button>Post</button>
+          <label htmlFor="file" className="file-input--label">
+            <FontAwesomeIcon icon={faImages} className="creat-post--icon" />
+            Choose a Image
+          </label>
+          <button className="create-post--button">Post</button>
         </form>
       </div>
     );

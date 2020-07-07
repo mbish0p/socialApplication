@@ -1,6 +1,5 @@
 import React from "react";
 import Registry from "./Registratrion";
-import { withRouter } from "react-router-dom";
 import axios from "axios";
 
 class App extends React.Component {

@@ -101,7 +101,7 @@ class CommentSection extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.addComment}>
+        <form className="comments--form" onSubmit={this.addComment}>
           <input
             placeholder="Your comment"
             value={this.state.comment}

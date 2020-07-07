@@ -85,32 +85,36 @@ class Comment extends React.Component {
   render() {
     return (
       <div>
-        <h4>{this.state.creator}</h4>
-        <DropdownButton>
-          <DropdownIcon icon={<RiSettings4Line />}>
-            <DropdownMenu settingOption={this.settingOption} />
-          </DropdownIcon>
-        </DropdownButton>
+        <div className="comment--header">
+          <h4>{this.state.creator}</h4>
+          <DropdownButton>
+            <DropdownIcon icon={<RiSettings4Line />}>
+              <DropdownMenu settingOption={this.settingOption} />
+            </DropdownIcon>
+          </DropdownButton>
 
-        <Modal
-          isOpen={this.state.openModal}
-          onRequestClose={this.handleCloseModal}
-        >
-          <h2>Edit Comment</h2>
-          <button onClick={this.handleCloseModal}>Close</button>
-
-          <form onSubmit={this.handleSubmit}>
-            <h2>{this.state.creator}</h2>
-            <input
-              value={this.state.content}
-              type="text"
-              onChange={this.handleEdit}
-            />
-            {this.state.error && <p>{this.state.error}</p>}
-            <button>Edit</button>
-          </form>
-        </Modal>
-        <p>{this.state.content}</p>
+          <Modal
+            isOpen={this.state.openModal}
+            onRequestClose={this.handleCloseModal}
+            closeTimeoutMS={300}
+            className="modal-edit"
+          >
+            <div className="modal-edit--header">
+              <h2>{this.state.creator}</h2>
+              <h2>Edit Comment</h2>
+            </div>
+            <form onSubmit={this.handleSubmit} className="modal-edit--form">
+              <input
+                value={this.state.content}
+                type="text"
+                onChange={this.handleEdit}
+              />
+              {this.state.error && <p>{this.state.error}</p>}
+              <button>Edit</button>
+            </form>
+          </Modal>
+        </div>
+        <p className="comment--content">{this.state.content}</p>
       </div>
     );
   }

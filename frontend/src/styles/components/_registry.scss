@@ -1,0 +1,89 @@
+.registry--header {
+  display: flex;
+  background: #ce95fa;
+  margin-bottom: 8rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.6rem;
+}
+
+button {
+  border-radius: 10rem;
+  font-size: 2rem;
+  color: #353052;
+  background: #52d6f7;
+  padding: 0.5rem 2.2rem;
+  border: none;
+  font-weight: bold;
+  outline: none;
+  border: 2px solid black;
+}
+
+button:hover {
+  color: #52d6f7;
+  background: #353052;
+}
+
+.registry--header h2 {
+  font-weight: bold;
+}
+
+.registry--form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.registry--form input {
+  padding: 0.8rem;
+  margin-bottom: 3.2rem;
+  background: #353052;
+  border: solid #52d6f7 3px;
+  border-radius: 2.4rem;
+  color: #ffffff;
+  text-align: center;
+  outline: none;
+  transition: 0.25s;
+  width: 40%;
+}
+
+.registry--form input:focus {
+  width: 60%;
+  border-color: #ce95fa;
+}
+
+.registry--button {
+  background: #ce95fa;
+  color: #353052;
+  width: 75%;
+  margin-top: 1.6rem;
+}
+
+.registry--button:hover {
+  background: #52d6f7;
+  color: #353052;
+}
+
+@media (min-width: 40rem) {
+  .registry--form input {
+    width: 30%;
+  }
+
+  .registry--form input:focus {
+    width: 40%;
+  }
+
+  .registry--button {
+    width: 60%;
+  }
+
+  .registry--header h2 {
+    margin-left: 3.2rem;
+  }
+
+  .registry--header--login_button {
+    padding: 0.5rem 4.8rem;
+    margin-right: 3.2rem;
+  }
+}

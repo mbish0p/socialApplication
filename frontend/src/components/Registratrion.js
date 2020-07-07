@@ -73,8 +73,9 @@ class Registry extends React.Component {
     return (
       <div>
         <Header handleLogin={this.handleLogin} />
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="registry--form">
           <input
+            autoComplete="none"
             value={this.state.name}
             onChange={this.handleChangeName}
             autoFocus
@@ -87,6 +88,7 @@ class Registry extends React.Component {
             placeholder="Age "
           />
           <input
+            autoComplete="none"
             value={this.state.email}
             onChange={this.handleChangeEmail}
             type="text"
@@ -103,8 +105,10 @@ class Registry extends React.Component {
             type="password"
             placeholder="Repete password  *"
           />
-          {this.state.error && <p>{this.state.error}</p>}
-          <button>Registry</button>
+          {this.state.error && (
+            <p className="form--error">{this.state.error}</p>
+          )}
+          <button className="registry--button">Registry</button>
         </form>
       </div>
     );
